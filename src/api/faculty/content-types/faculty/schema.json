@@ -19,6 +19,14 @@
       "type": "email",
       "required": true
     },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "ShortDescription": {
       "type": "string",
       "required": true

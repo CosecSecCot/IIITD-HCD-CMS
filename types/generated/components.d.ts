@@ -64,6 +64,17 @@ export interface ResearchPagesLabCard extends Struct.ComponentSchema {
   };
 }
 
+export interface ResearchPagesPublicationCard extends Struct.ComponentSchema {
+  collectionName: 'components_research_pages_publication_cards';
+  info: {
+    displayName: 'Publication Card';
+    icon: 'file';
+  };
+  attributes: {
+    Faculty: Schema.Attribute.Relation<'oneToOne', 'api::faculty.faculty'>;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -71,6 +82,7 @@ declare module '@strapi/strapi' {
       'components.link': ComponentsLink;
       'research-pages.department-project-card': ResearchPagesDepartmentProjectCard;
       'research-pages.lab-card': ResearchPagesLabCard;
+      'research-pages.publication-card': ResearchPagesPublicationCard;
     }
   }
 }

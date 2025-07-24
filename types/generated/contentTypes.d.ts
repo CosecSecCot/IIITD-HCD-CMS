@@ -427,6 +427,7 @@ export interface ApiFacultyFaculty extends Struct.CollectionTypeSchema {
       'api::department-project.department-project'
     >;
     Email: Schema.Attribute.Email & Schema.Attribute.Required;
+    Image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -461,6 +462,7 @@ export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Date: Schema.Attribute.Date & Schema.Attribute.Required;
     Faculties: Schema.Attribute.Relation<'manyToMany', 'api::faculty.faculty'>;
     Link: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -568,6 +570,11 @@ export interface ApiResearchPublicationsPageResearchPublicationsPage
       'api::research-publications-page.research-publications-page'
     > &
       Schema.Attribute.Private;
+    PublicationsToShow: Schema.Attribute.Component<
+      'research-pages.publication-card',
+      true
+    > &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

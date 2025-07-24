@@ -25,6 +25,10 @@
       "target": "api::faculty.faculty",
       "inversedBy": "Publications"
     },
+    "Date": {
+      "type": "date",
+      "required": true
+    },
     "Link": {
       "type": "string",
       "required": true
