@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_components_durations",
+  "info": {
+    "displayName": "Duration",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "From": {
+      "type": "date",
+      "required": true
+    },
+    "To": {
+      "type": "date"
+    }
+  },
+  "config": {}
+}

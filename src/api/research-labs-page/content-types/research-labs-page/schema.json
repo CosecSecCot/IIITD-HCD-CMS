@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "research_labs_pages",
+  "info": {
+    "singularName": "research-labs-page",
+    "pluralName": "research-labs-pages",
+    "displayName": "ResearchLabsPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "LabsToShow": {
+      "type": "component",
+      "component": "research-pages.lab-card",
+      "repeatable": true,
+      "required": true,
+      "min": 0
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "collectionName": "components_research_pages_lab_cards",
+  "info": {
+    "displayName": "Lab Card",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "LabType": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Research",
+      "enum": [
+        "Research",
+        "Teaching"
+      ]
+    },
+    "LabLogo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "LabName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "ShortDescription": {
+      "type": "string",
+      "required": true
+    },
+    "LongDescription": {
+      "type": "text",
+      "required": true
+    },
+    "Faculty": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::faculty.faculty"
+    },
+    "WebsiteLink": {
+      "type": "string",
+      "required": false
+    },
+    "DisplayColor": {
+      "type": "customField",
+      "customField": "plugin::color-picker.color",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": true
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_components_links",
+  "info": {
+    "displayName": "Link",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "DisplayText": {
+      "type": "string",
+      "required": true
+    },
+    "URL": {
+      "type": "string",
+      "required": true,
+      "regex": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+    }
+  },
+  "config": {}
+}

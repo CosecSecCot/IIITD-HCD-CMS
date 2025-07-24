@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "publications",
+  "info": {
+    "singularName": "publication",
+    "pluralName": "publications",
+    "displayName": "Publication"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "LongDescription": {
+      "type": "text",
+      "required": true
+    },
+    "Faculties": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::faculty.faculty",
+      "inversedBy": "Publications"
+    },
+    "Link": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

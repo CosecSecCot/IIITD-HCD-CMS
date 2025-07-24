@@ -1,0 +1,14 @@
+{
+  "kind": "singleType",
+  "collectionName": "research_publications_pages",
+  "info": {
+    "singularName": "research-publications-page",
+    "pluralName": "research-publications-pages",
+    "displayName": "ResearchPublicationsPage"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {}
+}

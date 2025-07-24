@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "faculties",
+  "info": {
+    "singularName": "faculty",
+    "pluralName": "faculties",
+    "displayName": "Faculty"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Email": {
+      "type": "email",
+      "required": true
+    },
+    "ShortDescription": {
+      "type": "string",
+      "required": true
+    },
+    "Office": {
+      "type": "string",
+      "required": false
+    },
+    "DepartmentProjects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::department-project.department-project",
+      "mappedBy": "Faculties"
+    },
+    "Publications": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::publication.publication",
+      "mappedBy": "Faculties"
+    }
+  }
+}

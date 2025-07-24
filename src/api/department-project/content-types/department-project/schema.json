@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "department_projects",
+  "info": {
+    "singularName": "department-project",
+    "pluralName": "department-projects",
+    "displayName": "DepartmentProject"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "LongDescription": {
+      "type": "text",
+      "required": true
+    },
+    "Faculties": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::faculty.faculty",
+      "inversedBy": "DepartmentProjects"
+    },
+    "Duration": {
+      "type": "component",
+      "component": "components.duration",
+      "repeatable": false,
+      "required": true
+    },
+    "Images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "FundedBy": {
+      "type": "component",
+      "component": "components.link",
+      "repeatable": false,
+      "required": false
+    }
+  }
+}
