@@ -10,13 +10,5 @@
     "draftAndPublish": true
   },
   "pluginOptions": {},
-  "attributes": {
-    "LabsToShow": {
-      "type": "component",
-      "component": "research-pages.lab-card",
-      "repeatable": true,
-      "required": true,
-      "min": 0
-    }
-  }
+  "attributes": {}
 }

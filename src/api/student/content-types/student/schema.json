@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "students",
+  "info": {
+    "singularName": "student",
+    "pluralName": "students",
+    "displayName": "Student"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Email": {
+      "type": "email",
+      "required": true
+    },
+    "Phone": {
+      "type": "biginteger"
+    },
+    "GraduatingYear": {
+      "type": "integer",
+      "required": true,
+      "min": 2008,
+      "max": 2100
+    },
+    "Course": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "B.Tech CSD",
+        "PhD"
+      ]
+    }
+  }
+}

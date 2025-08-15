@@ -448,6 +448,42 @@ export interface ApiFacultyFaculty extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLabLab extends Struct.CollectionTypeSchema {
+  collectionName: 'labs';
+  info: {
+    displayName: 'Lab';
+    pluralName: 'labs';
+    singularName: 'lab';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    AccentColor: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.CustomField<'plugin::color-picker.color'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Faculty: Schema.Attribute.Relation<'oneToOne', 'api::faculty.faculty'>;
+    LabLogo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    LabName: Schema.Attribute.String & Schema.Attribute.Required;
+    LabType: Schema.Attribute.Enumeration<['Research', 'Teaching']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Research'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::lab.lab'> &
+      Schema.Attribute.Private;
+    LongDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    ShortDescription: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    WebsiteLink: Schema.Attribute.Component<'components.link', false>;
+  };
+}
+
 export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
   collectionName: 'publications';
   info: {
@@ -473,6 +509,7 @@ export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     LongDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    Tags: Schema.Attribute.Component<'components.tag', true>;
     Title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -495,14 +532,6 @@ export interface ApiResearchLabsPageResearchLabsPage
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    LabsToShow: Schema.Attribute.Component<'research-pages.lab-card', true> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -516,65 +545,40 @@ export interface ApiResearchLabsPageResearchLabsPage
   };
 }
 
-export interface ApiResearchProjectsPageResearchProjectsPage
-  extends Struct.SingleTypeSchema {
-  collectionName: 'research_projects_pages';
+export interface ApiStudentStudent extends Struct.CollectionTypeSchema {
+  collectionName: 'students';
   info: {
-    displayName: 'ResearchProjectsPage';
-    pluralName: 'research-projects-pages';
-    singularName: 'research-projects-page';
+    displayName: 'Student';
+    pluralName: 'students';
+    singularName: 'student';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    Course: Schema.Attribute.Enumeration<['B.Tech CSD', 'PhD']> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Email: Schema.Attribute.Email & Schema.Attribute.Required;
+    GraduatingYear: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2100;
+          min: 2008;
+        },
+        number
+      >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::research-projects-page.research-projects-page'
+      'api::student.student'
     > &
       Schema.Attribute.Private;
-    ProjectsToShow: Schema.Attribute.Component<
-      'research-pages.department-project-card',
-      true
-    > &
-      Schema.Attribute.Required;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiResearchPublicationsPageResearchPublicationsPage
-  extends Struct.SingleTypeSchema {
-  collectionName: 'research_publications_pages';
-  info: {
-    displayName: 'ResearchPublicationsPage';
-    pluralName: 'research-publications-pages';
-    singularName: 'research-publications-page';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::research-publications-page.research-publications-page'
-    > &
-      Schema.Attribute.Private;
-    PublicationsToShow: Schema.Attribute.Component<
-      'research-pages.publication-card',
-      true
-    > &
-      Schema.Attribute.Required;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Phone: Schema.Attribute.BigInteger;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1093,10 +1097,10 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::department-project.department-project': ApiDepartmentProjectDepartmentProject;
       'api::faculty.faculty': ApiFacultyFaculty;
+      'api::lab.lab': ApiLabLab;
       'api::publication.publication': ApiPublicationPublication;
       'api::research-labs-page.research-labs-page': ApiResearchLabsPageResearchLabsPage;
-      'api::research-projects-page.research-projects-page': ApiResearchProjectsPageResearchProjectsPage;
-      'api::research-publications-page.research-publications-page': ApiResearchPublicationsPageResearchPublicationsPage;
+      'api::student.student': ApiStudentStudent;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

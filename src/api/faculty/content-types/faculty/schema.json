@@ -35,16 +35,16 @@
       "type": "string",
       "required": false
     },
-    "DepartmentProjects": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::department-project.department-project",
-      "mappedBy": "Faculties"
-    },
     "Publications": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::publication.publication",
+      "mappedBy": "Faculties"
+    },
+    "DepartmentProjects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::department-project.department-project",
       "mappedBy": "Faculties"
     }
   }

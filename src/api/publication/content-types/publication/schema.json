@@ -32,6 +32,11 @@
     "Link": {
       "type": "string",
       "required": true
+    },
+    "Tags": {
+      "type": "component",
+      "component": "components.tag",
+      "repeatable": true
     }
   }
 }

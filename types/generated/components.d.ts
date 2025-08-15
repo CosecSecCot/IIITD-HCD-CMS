@@ -19,59 +19,70 @@ export interface ComponentsLink extends Struct.ComponentSchema {
     icon: 'link';
   };
   attributes: {
-    DisplayText: Schema.Attribute.String & Schema.Attribute.Required;
+    DisplayText: Schema.Attribute.String;
     URL: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
-export interface ResearchPagesDepartmentProjectCard
-  extends Struct.ComponentSchema {
-  collectionName: 'components_research_pages_department_project_cards';
+export interface ComponentsTag extends Struct.ComponentSchema {
+  collectionName: 'components_components_tags';
   info: {
-    displayName: 'Department Project Card';
-    icon: 'briefcase';
+    displayName: 'Tag';
+    icon: 'hashtag';
   };
   attributes: {
-    department_project: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::department-project.department-project'
-    >;
-    ShortDescription: Schema.Attribute.String;
+    Tag: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
-export interface ResearchPagesLabCard extends Struct.ComponentSchema {
-  collectionName: 'components_research_pages_lab_cards';
+export interface SharedOpenGraph extends Struct.ComponentSchema {
+  collectionName: 'components_shared_open_graphs';
   info: {
-    displayName: 'Lab Card';
-    icon: 'apps';
+    displayName: 'openGraph';
+    icon: 'project-diagram';
   };
   attributes: {
-    DisplayColor: Schema.Attribute.String &
+    ogDescription: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.CustomField<'plugin::color-picker.color'>;
-    Faculty: Schema.Attribute.Relation<'oneToOne', 'api::faculty.faculty'>;
-    LabLogo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
-    LabName: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 200;
+      }>;
+    ogImage: Schema.Attribute.Media<'images'>;
+    ogTitle: Schema.Attribute.String &
       Schema.Attribute.Required &
-      Schema.Attribute.Unique;
-    LabType: Schema.Attribute.Enumeration<['Research', 'Teaching']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'Research'>;
-    LongDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    ShortDescription: Schema.Attribute.String & Schema.Attribute.Required;
-    WebsiteLink: Schema.Attribute.String;
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 70;
+      }>;
+    ogType: Schema.Attribute.String;
+    ogUrl: Schema.Attribute.String;
   };
 }
 
-export interface ResearchPagesPublicationCard extends Struct.ComponentSchema {
-  collectionName: 'components_research_pages_publication_cards';
+export interface SharedSeo extends Struct.ComponentSchema {
+  collectionName: 'components_shared_seos';
   info: {
-    displayName: 'Publication Card';
-    icon: 'file';
+    displayName: 'seo';
+    icon: 'search';
   };
   attributes: {
-    Faculty: Schema.Attribute.Relation<'oneToOne', 'api::faculty.faculty'>;
+    canonicalURL: Schema.Attribute.String;
+    keywords: Schema.Attribute.Text;
+    metaDescription: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 160;
+        minLength: 50;
+      }>;
+    metaImage: Schema.Attribute.Media<'images'>;
+    metaRobots: Schema.Attribute.String;
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+    metaViewport: Schema.Attribute.String;
+    openGraph: Schema.Attribute.Component<'shared.open-graph', false>;
+    structuredData: Schema.Attribute.JSON;
   };
 }
 
@@ -80,9 +91,9 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'components.duration': ComponentsDuration;
       'components.link': ComponentsLink;
-      'research-pages.department-project-card': ResearchPagesDepartmentProjectCard;
-      'research-pages.lab-card': ResearchPagesLabCard;
-      'research-pages.publication-card': ResearchPagesPublicationCard;
+      'components.tag': ComponentsTag;
+      'shared.open-graph': SharedOpenGraph;
+      'shared.seo': SharedSeo;
     }
   }
 }

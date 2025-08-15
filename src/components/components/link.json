@@ -8,7 +8,7 @@
   "attributes": {
     "DisplayText": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "URL": {
       "type": "string",

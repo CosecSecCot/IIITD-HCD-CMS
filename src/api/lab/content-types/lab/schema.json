@@ -1,10 +1,15 @@
 {
-  "collectionName": "components_research_pages_lab_cards",
+  "kind": "collectionType",
+  "collectionName": "labs",
   "info": {
-    "displayName": "Lab Card",
-    "icon": "apps"
+    "singularName": "lab",
+    "pluralName": "labs",
+    "displayName": "Lab"
   },
-  "options": {},
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
   "attributes": {
     "LabType": {
       "type": "enumeration",
@@ -25,8 +30,7 @@
     },
     "LabName": {
       "type": "string",
-      "required": true,
-      "unique": true
+      "required": true
     },
     "ShortDescription": {
       "type": "string",
@@ -42,15 +46,15 @@
       "target": "api::faculty.faculty"
     },
     "WebsiteLink": {
-      "type": "string",
-      "required": false
+      "type": "component",
+      "component": "components.link",
+      "repeatable": false
     },
-    "DisplayColor": {
+    "AccentColor": {
       "type": "customField",
       "customField": "plugin::color-picker.color",
       "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
       "required": true
     }
-  },
-  "config": {}
+  }
 }
