@@ -517,34 +517,6 @@ export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiResearchLabsPageResearchLabsPage
-  extends Struct.SingleTypeSchema {
-  collectionName: 'research_labs_pages';
-  info: {
-    displayName: 'ResearchLabsPage';
-    pluralName: 'research-labs-pages';
-    singularName: 'research-labs-page';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::research-labs-page.research-labs-page'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiStudentStudent extends Struct.CollectionTypeSchema {
   collectionName: 'students';
   info: {
@@ -1099,7 +1071,6 @@ declare module '@strapi/strapi' {
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::lab.lab': ApiLabLab;
       'api::publication.publication': ApiPublicationPublication;
-      'api::research-labs-page.research-labs-page': ApiResearchLabsPageResearchLabsPage;
       'api::student.student': ApiStudentStudent;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
