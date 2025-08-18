@@ -435,7 +435,6 @@ export interface ApiFacultyFaculty extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Name: Schema.Attribute.String & Schema.Attribute.Required;
-    Office: Schema.Attribute.String;
     Publications: Schema.Attribute.Relation<
       'manyToMany',
       'api::publication.publication'
@@ -466,6 +465,7 @@ export interface ApiLabLab extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Faculty: Schema.Attribute.Relation<'oneToOne', 'api::faculty.faculty'>;
+    LabLocation: Schema.Attribute.String & Schema.Attribute.Required;
     LabLogo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     LabName: Schema.Attribute.String & Schema.Attribute.Required;
     LabType: Schema.Attribute.Enumeration<['Research', 'Teaching']> &
@@ -481,6 +481,39 @@ export interface ApiLabLab extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     WebsiteLink: Schema.Attribute.Component<'components.link', false>;
+  };
+}
+
+export interface ApiNewsAndEventNewsAndEvent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'news_and_events';
+  info: {
+    displayName: 'News&Event';
+    pluralName: 'news-and-events';
+    singularName: 'news-and-event';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    CoverImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::news-and-event.news-and-event'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Title: Schema.Attribute.String & Schema.Attribute.Required;
+    Type: Schema.Attribute.Enumeration<['News', 'Event']> &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -510,6 +543,39 @@ export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
     LongDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     Tags: Schema.Attribute.Component<'components.tag', true>;
+    Title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStudentProjectStudentProject
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'student_projects';
+  info: {
+    displayName: 'StudentProject';
+    pluralName: 'student-projects';
+    singularName: 'student-project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    CoverImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Text & Schema.Attribute.Required;
+    Lab: Schema.Attribute.Relation<'oneToOne', 'api::lab.lab'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::student-project.student-project'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Students: Schema.Attribute.Relation<'oneToMany', 'api::student.student'>;
     Title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1070,7 +1136,9 @@ declare module '@strapi/strapi' {
       'api::department-project.department-project': ApiDepartmentProjectDepartmentProject;
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::lab.lab': ApiLabLab;
+      'api::news-and-event.news-and-event': ApiNewsAndEventNewsAndEvent;
       'api::publication.publication': ApiPublicationPublication;
+      'api::student-project.student-project': ApiStudentProjectStudentProject;
       'api::student.student': ApiStudentStudent;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

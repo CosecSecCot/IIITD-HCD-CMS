@@ -31,10 +31,6 @@
       "type": "string",
       "required": true
     },
-    "Office": {
-      "type": "string",
-      "required": false
-    },
     "Publications": {
       "type": "relation",
       "relation": "manyToMany",

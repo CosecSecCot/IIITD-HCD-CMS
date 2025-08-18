@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "news_and_events",
+  "info": {
+    "singularName": "news-and-event",
+    "pluralName": "news-and-events",
+    "displayName": "News&Event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Type": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "News",
+        "Event"
+      ]
+    },
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "type": "string",
+      "required": true
+    },
+    "CoverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

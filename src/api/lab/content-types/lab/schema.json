@@ -32,6 +32,10 @@
       "type": "string",
       "required": true
     },
+    "LabLocation": {
+      "type": "string",
+      "required": true
+    },
     "ShortDescription": {
       "type": "string",
       "required": true

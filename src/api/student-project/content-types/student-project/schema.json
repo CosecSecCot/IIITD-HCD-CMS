@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "student_projects",
+  "info": {
+    "singularName": "student-project",
+    "pluralName": "student-projects",
+    "displayName": "StudentProject"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Students": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student.student"
+    },
+    "Lab": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::lab.lab"
+    },
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "type": "text",
+      "required": true
+    },
+    "CoverImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
