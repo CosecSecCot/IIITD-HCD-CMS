@@ -28,7 +28,8 @@
       ]
     },
     "ShortDescription": {
-      "type": "string",
+      "type": "text",
+      "maxLength": 150,
       "required": true
     },
     "Publications": {
