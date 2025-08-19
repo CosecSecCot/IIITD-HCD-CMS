@@ -435,10 +435,6 @@ export interface ApiFacultyFaculty extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Name: Schema.Attribute.String & Schema.Attribute.Required;
-    Publications: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::publication.publication'
-    >;
     publishedAt: Schema.Attribute.DateTime;
     ShortDescription: Schema.Attribute.Text &
       Schema.Attribute.Required &
@@ -575,11 +571,19 @@ export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Authors: Schema.Attribute.Component<'components.publication-author', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Date: Schema.Attribute.Date & Schema.Attribute.Required;
-    Faculties: Schema.Attribute.Relation<'manyToMany', 'api::faculty.faculty'>;
+    Lab: Schema.Attribute.Relation<'oneToOne', 'api::lab.lab'>;
     Link: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -591,6 +595,18 @@ export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     Tags: Schema.Attribute.Component<'components.tag', true>;
     Title: Schema.Attribute.String & Schema.Attribute.Required;
+    Type: Schema.Attribute.Enumeration<
+      [
+        'Journal Article',
+        'Conference Paper',
+        'Book',
+        'Book Chapter',
+        'Report',
+        'Thesis',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Journal Article'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

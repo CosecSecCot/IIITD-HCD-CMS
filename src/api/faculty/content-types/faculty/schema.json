@@ -32,12 +32,6 @@
       "maxLength": 150,
       "required": true
     },
-    "Publications": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::publication.publication",
-      "mappedBy": "Faculties"
-    },
     "DepartmentProjects": {
       "type": "relation",
       "relation": "manyToMany",

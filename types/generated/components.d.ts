@@ -24,6 +24,21 @@ export interface ComponentsLink extends Struct.ComponentSchema {
   };
 }
 
+export interface ComponentsPublicationAuthor extends Struct.ComponentSchema {
+  collectionName: 'components_components_publication_authors';
+  info: {
+    displayName: 'PublicationAuthor';
+    icon: 'write';
+  };
+  attributes: {
+    Name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+  };
+}
+
 export interface ComponentsTag extends Struct.ComponentSchema {
   collectionName: 'components_components_tags';
   info: {
@@ -91,6 +106,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'components.duration': ComponentsDuration;
       'components.link': ComponentsLink;
+      'components.publication-author': ComponentsPublicationAuthor;
       'components.tag': ComponentsTag;
       'shared.open-graph': SharedOpenGraph;
       'shared.seo': SharedSeo;

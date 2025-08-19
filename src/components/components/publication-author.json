@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_components_publication_authors",
+  "info": {
+    "displayName": "PublicationAuthor",
+    "icon": "write"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "maxLength": 100,
+      "required": true
+    }
+  },
+  "config": {}
+}

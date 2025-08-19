@@ -19,11 +19,12 @@
       "type": "text",
       "required": true
     },
-    "Faculties": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::faculty.faculty",
-      "inversedBy": "Publications"
+    "Authors": {
+      "type": "component",
+      "component": "components.publication-author",
+      "repeatable": true,
+      "required": true,
+      "min": 1
     },
     "Date": {
       "type": "date",
@@ -37,6 +38,24 @@
       "type": "component",
       "component": "components.tag",
       "repeatable": true
+    },
+    "Type": {
+      "type": "enumeration",
+      "required": true,
+      "default": "Journal Article",
+      "enum": [
+        "Journal Article",
+        "Conference Paper",
+        "Book",
+        "Book Chapter",
+        "Report",
+        "Thesis"
+      ]
+    },
+    "Lab": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::lab.lab"
     }
   }
 }
