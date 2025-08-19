@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "collaborations_pages",
+  "info": {
+    "singularName": "collaborations-page",
+    "pluralName": "collaborations-pages",
+    "displayName": "Collaborations-page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Collaborators": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

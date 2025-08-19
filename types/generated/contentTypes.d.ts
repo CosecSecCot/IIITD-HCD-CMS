@@ -373,6 +373,35 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCollaborationsPageCollaborationsPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'collaborations_pages';
+  info: {
+    displayName: 'Collaborations-page';
+    pluralName: 'collaborations-pages';
+    singularName: 'collaborations-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Collaborators: Schema.Attribute.Media<'images', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::collaborations-page.collaborations-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiDepartmentProjectDepartmentProject
   extends Struct.CollectionTypeSchema {
   collectionName: 'department_projects';
@@ -1196,6 +1225,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::collaborations-page.collaborations-page': ApiCollaborationsPageCollaborationsPage;
       'api::department-project.department-project': ApiDepartmentProjectDepartmentProject;
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::lab.lab': ApiLabLab;
