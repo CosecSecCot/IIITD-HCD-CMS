@@ -589,6 +589,35 @@ export interface ApiOurWorkPageOurWorkPage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPlacementsPagePlacementsPage
+  extends Struct.SingleTypeSchema {
+  collectionName: 'placements_pages';
+  info: {
+    displayName: 'Placements-page';
+    pluralName: 'placements-pages';
+    singularName: 'placements-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Companies: Schema.Attribute.Media<'images', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::placements-page.placements-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
   collectionName: 'publications';
   info: {
@@ -1231,6 +1260,7 @@ declare module '@strapi/strapi' {
       'api::lab.lab': ApiLabLab;
       'api::news-and-event.news-and-event': ApiNewsAndEventNewsAndEvent;
       'api::our-work-page.our-work-page': ApiOurWorkPageOurWorkPage;
+      'api::placements-page.placements-page': ApiPlacementsPagePlacementsPage;
       'api::publication.publication': ApiPublicationPublication;
       'api::student-project.student-project': ApiStudentProjectStudentProject;
       'api::student.student': ApiStudentStudent;

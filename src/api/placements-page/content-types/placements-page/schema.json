@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "placements_pages",
+  "info": {
+    "singularName": "placements-page",
+    "pluralName": "placements-pages",
+    "displayName": "Placements-page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Companies": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
