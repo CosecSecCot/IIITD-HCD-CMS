@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "our_work_pages",
+  "info": {
+    "singularName": "our-work-page",
+    "pluralName": "our-work-pages",
+    "displayName": "OurWork-page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Banner": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student-project.student-project"
+    },
+    "HighlightedProjects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student-project.student-project"
+    }
+  }
+}

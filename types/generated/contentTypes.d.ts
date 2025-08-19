@@ -517,6 +517,41 @@ export interface ApiNewsAndEventNewsAndEvent
   };
 }
 
+export interface ApiOurWorkPageOurWorkPage extends Struct.SingleTypeSchema {
+  collectionName: 'our_work_pages';
+  info: {
+    displayName: 'OurWork-page';
+    pluralName: 'our-work-pages';
+    singularName: 'our-work-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Banner: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::student-project.student-project'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    HighlightedProjects: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::student-project.student-project'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::our-work-page.our-work-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
   collectionName: 'publications';
   info: {
@@ -1137,6 +1172,7 @@ declare module '@strapi/strapi' {
       'api::faculty.faculty': ApiFacultyFaculty;
       'api::lab.lab': ApiLabLab;
       'api::news-and-event.news-and-event': ApiNewsAndEventNewsAndEvent;
+      'api::our-work-page.our-work-page': ApiOurWorkPageOurWorkPage;
       'api::publication.publication': ApiPublicationPublication;
       'api::student-project.student-project': ApiStudentProjectStudentProject;
       'api::student.student': ApiStudentStudent;
