@@ -29,7 +29,6 @@
     },
     "ShortDescription": {
       "type": "text",
-      "maxLength": 150,
       "required": true
     },
     "DepartmentProjects": {

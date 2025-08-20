@@ -25,7 +25,6 @@
     },
     "Description": {
       "type": "text",
-      "maxLength": 300,
       "required": true
     },
     "CoverImage": {
