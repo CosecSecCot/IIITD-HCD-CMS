@@ -46,10 +46,19 @@
       "enum": [
         "Journal Article",
         "Conference Paper",
+        "Poster",
         "Book",
         "Book Chapter",
         "Report",
         "Thesis"
+      ]
+    },
+    "VenueImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
       ]
     },
     "Lab": {

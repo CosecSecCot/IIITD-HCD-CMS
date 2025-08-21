@@ -645,6 +645,7 @@ export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
       [
         'Journal Article',
         'Conference Paper',
+        'Poster',
         'Book',
         'Book Chapter',
         'Report',
@@ -656,6 +657,7 @@ export interface ApiPublicationPublication extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    VenueImage: Schema.Attribute.Media<'images'>;
   };
 }
 
