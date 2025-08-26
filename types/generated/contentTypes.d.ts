@@ -521,10 +521,12 @@ export interface ApiNewsAndEventNewsAndEvent
     draftAndPublish: true;
   };
   attributes: {
+    Content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     CoverImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Date: Schema.Attribute.Date & Schema.Attribute.Required;
     Description: Schema.Attribute.Text & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
