@@ -466,9 +466,15 @@ export interface ApiFacultyFaculty extends Struct.CollectionTypeSchema {
     Name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     ShortDescription: Schema.Attribute.Text & Schema.Attribute.Required;
+    Type: Schema.Attribute.Enumeration<
+      ['none', 'professor-of-practice', 'visiting-faculty', 'adjunct-faculty']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'none'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    WebsiteLink: Schema.Attribute.String;
   };
 }
 

@@ -31,6 +31,21 @@
       "type": "text",
       "required": true
     },
+    "Type": {
+      "type": "enumeration",
+      "required": true,
+      "default": "none",
+      "enum": [
+        "none",
+        "professor-of-practice",
+        "visiting-faculty",
+        "adjunct-faculty"
+      ]
+    },
+    "WebsiteLink": {
+      "type": "string",
+      "regex": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+    },
     "DepartmentProjects": {
       "type": "relation",
       "relation": "manyToMany",
