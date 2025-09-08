@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "phd_students",
+  "info": {
+    "singularName": "phd-student",
+    "pluralName": "phd-students",
+    "displayName": "PhdStudent"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Email": {
+      "type": "email",
+      "required": true
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "ShortDescription": {
+      "type": "text",
+      "required": true
+    },
+    "Lab": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::lab.lab"
+    },
+    "WebsiteLink": {
+      "type": "string",
+      "regex": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+    }
+  }
+}
