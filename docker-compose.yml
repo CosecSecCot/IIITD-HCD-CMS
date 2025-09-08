@@ -45,15 +45,6 @@ services:
     networks:
       - hcd-cms
 
-  watchtower:
-    image: containrrr/watchtower:latest
-    container_name: watchtower
-    restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 30 hcd-cms
-    # “hcd-cms” tells Watchtower to only watch & update the hcd-cms service
-
 volumes:
   strapi-data:
 
