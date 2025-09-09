@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "student_representatives",
+  "info": {
+    "singularName": "student-representative",
+    "pluralName": "student-representatives",
+    "displayName": "StudentRepresentative"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Email": {
+      "type": "email",
+      "required": true
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "ShortDescription": {
+      "type": "string",
+      "required": true
+    },
+    "WebsiteLink": {
+      "type": "string",
+      "regex": "https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)"
+    }
+  }
+}

@@ -373,6 +373,41 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAdministrationAdministration
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'administrations';
+  info: {
+    displayName: 'Administration';
+    pluralName: 'administrations';
+    singularName: 'administration';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Email: Schema.Attribute.Email & Schema.Attribute.Required;
+    Image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::administration.administration'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Office: Schema.Attribute.String;
+    Phone: Schema.Attribute.String & Schema.Attribute.Unique;
+    publishedAt: Schema.Attribute.DateTime;
+    ShortDescription: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    WebsiteLink: Schema.Attribute.String;
+  };
+}
+
 export interface ApiCollaborationsPageCollaborationsPage
   extends Struct.SingleTypeSchema {
   collectionName: 'collaborations_pages';
@@ -732,6 +767,39 @@ export interface ApiStudentProjectStudentProject
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiStudentRepresentativeStudentRepresentative
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'student_representatives';
+  info: {
+    displayName: 'StudentRepresentative';
+    pluralName: 'student-representatives';
+    singularName: 'student-representative';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Email: Schema.Attribute.Email & Schema.Attribute.Required;
+    Image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::student-representative.student-representative'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    ShortDescription: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    WebsiteLink: Schema.Attribute.String;
   };
 }
 
@@ -1285,6 +1353,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::administration.administration': ApiAdministrationAdministration;
       'api::collaborations-page.collaborations-page': ApiCollaborationsPageCollaborationsPage;
       'api::department-project.department-project': ApiDepartmentProjectDepartmentProject;
       'api::faculty.faculty': ApiFacultyFaculty;
@@ -1295,6 +1364,7 @@ declare module '@strapi/strapi' {
       'api::placements-page.placements-page': ApiPlacementsPagePlacementsPage;
       'api::publication.publication': ApiPublicationPublication;
       'api::student-project.student-project': ApiStudentProjectStudentProject;
+      'api::student-representative.student-representative': ApiStudentRepresentativeStudentRepresentative;
       'api::student.student': ApiStudentStudent;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
