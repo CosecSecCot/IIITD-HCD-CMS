@@ -27,6 +27,9 @@
         "images"
       ]
     },
+    "Position": {
+      "type": "string"
+    },
     "ShortDescription": {
       "type": "text",
       "required": true

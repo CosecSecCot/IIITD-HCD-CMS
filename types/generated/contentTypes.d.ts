@@ -499,6 +499,7 @@ export interface ApiFacultyFaculty extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Position: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     ShortDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     Type: Schema.Attribute.Enumeration<
