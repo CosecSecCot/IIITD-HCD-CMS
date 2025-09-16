@@ -34,9 +34,9 @@
     "Type": {
       "type": "enumeration",
       "required": true,
-      "default": "none",
+      "default": "core",
       "enum": [
-        "none",
+        "core",
         "professor-of-practice",
         "visiting-faculty",
         "adjunct-faculty"
