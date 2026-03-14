@@ -54,6 +54,10 @@
       "relation": "manyToMany",
       "target": "api::department-project.department-project",
       "mappedBy": "Faculties"
+    },
+    "HideFromFacultyPage": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

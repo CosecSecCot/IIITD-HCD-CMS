@@ -491,6 +491,8 @@ export interface ApiFacultyFaculty extends Struct.CollectionTypeSchema {
       'api::department-project.department-project'
     >;
     Email: Schema.Attribute.Email & Schema.Attribute.Required;
+    HideFromFacultyPage: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     Image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
