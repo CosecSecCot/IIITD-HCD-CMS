@@ -388,9 +388,8 @@ export interface ApiAdministrationAdministration
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Draft: Schema.Attribute.Boolean;
     Email: Schema.Attribute.Email & Schema.Attribute.Required;
-    Image: Schema.Attribute.Media<'images'>;
+    Image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -567,12 +566,13 @@ export interface ApiNewsAndEventNewsAndEvent
   };
   attributes: {
     Content: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    CoverImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    CoverImage: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Date: Schema.Attribute.Date & Schema.Attribute.Required;
     Description: Schema.Attribute.Text & Schema.Attribute.Required;
+    Draft: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

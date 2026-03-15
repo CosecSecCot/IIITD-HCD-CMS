@@ -34,7 +34,7 @@
     "CoverImage": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images"
       ]
@@ -42,6 +42,9 @@
     "Content": {
       "type": "blocks",
       "required": true
+    },
+    "Draft": {
+      "type": "boolean"
     }
   }
 }
